@@ -3,6 +3,8 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Validation\ValidationException;
+use Symfony\Component\HttpFoundation\Response;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -26,6 +28,14 @@ class Handler extends ExceptionHandler
         'password',
         'password_confirmation',
     ];
+
+    public function render($request, Throwable $e)
+    {
+        return match (get_class($e)) {
+            ValidationException::class => response()->json($e->errors(), Response::HTTP_UNPROCESSABLE_ENTITY),
+            default => parent::render($request, $e)
+        };
+    }
 
     /**
      * Register the exception handling callbacks for the application.
