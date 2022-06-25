@@ -112,7 +112,7 @@ class SubscriberFieldTest extends TestCase
     }
 
 
-    public function test_a_field_is_scoped_to_a_subscription()
+    public function test_a_field_is_scoped_to_a_subscriber()
     {
         /**
          * @var Field $field
