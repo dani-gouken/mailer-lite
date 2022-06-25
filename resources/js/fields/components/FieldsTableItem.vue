@@ -17,12 +17,7 @@
           class="btn btn-danger"
           :disabled="isLoading"
         >
-          <span
-            v-if="isLoading"
-            class="spinner-border spinner-border-sm"
-            role="status"
-            aria-hidden="true"
-          ></span>
+          <Loader v-if="isLoading" />
           <span v-else>Delete</span>
         </button>
       </div>
@@ -33,6 +28,7 @@
 import { useFetch } from "../../utils/useFetch";
 import { defineProps, defineEmits } from "vue";
 import { useRouter } from "vue-router";
+import Loader from "../../shared/Alert.vue";
 
 const { field, subscriber } = defineProps({
   field: {
@@ -65,7 +61,7 @@ const onDeletePressed = () => {
       .then(() => emit("delete"))
       .catch((err) => {
         console.error(err);
-        alert(error.value)
+        alert(error.value);
       });
   }
 };

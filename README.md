@@ -1,12 +1,11 @@
 # Mailer lite coding test
 # Requirements
-To run the project, you will need the tools:
-- PHP 8.1, with all the extension to run the Laravel Framework 
+- PHP 8.1, with all the required extension Laravel 
 - Composer
 - Node runtime
 
 # Run the project
-- Run `composer install` to install all the dependencies
+- Run `composer install` to install all the php dependencies
 - Run `npm i` to install all node modules
 - Run `npm run prod` to compile the assets
 - Copy the .env.example to .env, and adjust the configurations
@@ -16,9 +15,10 @@ To run the project, you will need the tools:
 
 # Run the test
 to run the test you will need the PHP SQlite Extension
-if you are on a debian based system, you can run `apt install php8.1-sqlite`(supposing you already php8.1 installed)
 
-To run the test run the command:
+if you are on a debian based system, you can run `apt install php8.1-sqlite`(supposing you already have php8.1 installed)
+
+To run the tests, run the command:
 `php artisan test`
 
 if you want to run the test against a real database, you can comment the `DB_CONNECTION` line in the `phpunit.xml` file
