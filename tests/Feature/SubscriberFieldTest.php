@@ -184,7 +184,7 @@ class SubscriberFieldTest extends TestCase
     /**
      * @return void
      */
-    public function test_404_is_returned_when_accessing_unknown_subscriber()
+    public function test_404_is_returned_when_accessing_unknown_data()
     {
         $subscriber = SubscriberFactory::new()->create();
         $this->assertDatabaseMissing(Field::class, ["id" => $id =  42]);
