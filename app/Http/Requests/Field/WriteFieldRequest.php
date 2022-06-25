@@ -22,5 +22,4 @@ class WriteFieldRequest extends AbstractApiFormRequest
             "type" => $this->optionalRuleOnUpdate(["required", new Enum(FieldTypeEnum::class)]),
         ];
     }
-
 }

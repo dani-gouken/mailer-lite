@@ -54,7 +54,6 @@ class SubscriberController extends Controller
             $request->data()
         );
         return new SubscriberResource($subscriber->refresh());
-
     }
 
     /**

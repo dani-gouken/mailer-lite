@@ -36,5 +36,4 @@ class WriteSubscriberRequest extends AbstractApiFormRequest
             "state" => $this->optionalRuleOnUpdate(["required", new Enum(SubscriberStateEnum::class)]),
         ];
     }
-
 }

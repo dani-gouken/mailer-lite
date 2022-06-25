@@ -43,5 +43,4 @@ class Field extends Model
     {
         return $this->title;
     }
-
 }

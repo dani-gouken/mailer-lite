@@ -20,5 +20,4 @@ abstract class AbstractApiFormRequest extends FormRequest
     {
         return $this->json()->all();
     }
-
 }

@@ -79,7 +79,7 @@ class SubscriberFieldTest extends TestCase
     public function test_fields_are_created()
     {
         $subscriber = SubscriberFactory::new()->create();
-        $response = $this->postJson(route("subscribers.fields.store",[
+        $response = $this->postJson(route("subscribers.fields.store", [
             "subscriber" => $subscriber
         ]), $this->fieldData);
         $response->assertStatus(201);
@@ -107,7 +107,7 @@ class SubscriberFieldTest extends TestCase
          */
         $subscriber = Subscriber::factory()->create();
         $data = array_merge($this->fieldData, $overrides);
-        $response = $this->postJson(route("subscribers.fields.store",compact("subscriber")), $data);
+        $response = $this->postJson(route("subscribers.fields.store", compact("subscriber")), $data);
         $response->assertStatus(422);
     }
 
@@ -172,13 +172,13 @@ class SubscriberFieldTest extends TestCase
         $subscriber = Subscriber::factory()->create();
         $field = FieldFactory::new()->forSubscriber($subscriber)->create();
         $id = $field->getId();
-        $this->assertDatabaseHas(Field::class,compact("id"));
+        $this->assertDatabaseHas(Field::class, compact("id"));
         $response = $this->delete(route("subscribers.fields.destroy", [
             "subscriber" => $subscriber,
             "field" => $field
         ]));
         $response->assertNoContent(200);
-        $this->assertDatabaseMissing(Field::class,compact("id"));
+        $this->assertDatabaseMissing(Field::class, compact("id"));
     }
 
     /**
@@ -187,7 +187,7 @@ class SubscriberFieldTest extends TestCase
     public function test_404_is_returned_when_accessing_unknown_subscriber()
     {
         $subscriber = SubscriberFactory::new()->create();
-        $this->assertDatabaseMissing(Field::class,["id" => $id =  42]);
+        $this->assertDatabaseMissing(Field::class, ["id" => $id =  42]);
         $response = $this->get(route("subscribers.fields.show", [
             "subscriber" => $subscriber,
             "field" => $id
@@ -211,5 +211,4 @@ class SubscriberFieldTest extends TestCase
     {
         return ["id" => $field->getId(), "title" => $field->getTitle(), "type" => $field->getType()->value];
     }
-
 }
