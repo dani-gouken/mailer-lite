@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Models\Subscriber;
 use App\Models\SubscriberStateEnum;
+use Database\Factories\FieldFactory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use JetBrains\PhpStorm\ArrayShape;
 use Tests\TestCase;
@@ -46,7 +47,7 @@ class SubscriberTest extends TestCase
         $response = $this->getJson(route("subscribers.index"));
         $response->assertStatus(200);
         $response->assertJson([
-            "data" => $subscribers->map(fn($v) => $this->subscriber_to_array($v))->toArray(),
+            "data" => $subscribers->map(fn ($v) => $this->subscriber_to_array($v))->toArray(),
         ]);
     }
 
@@ -99,6 +100,7 @@ class SubscriberTest extends TestCase
         $response = $this->postJson(route("subscribers.store"), $data);
         $response->assertStatus(422);
     }
+
 
     /**
      * @return void
@@ -181,12 +183,12 @@ class SubscriberTest extends TestCase
          */
         $subscriber = Subscriber::factory()->create();
         $id = $subscriber->getId();
-        $this->assertDatabaseHas(Subscriber::class,compact("id"));
+        $this->assertDatabaseHas(Subscriber::class, compact("id"));
         $response = $this->delete(route("subscribers.destroy", [
             "subscriber" => $id,
         ]));
         $response->assertNoContent(200);
-        $this->assertDatabaseMissing(Subscriber::class,compact("id"));
+        $this->assertDatabaseMissing(Subscriber::class, compact("id"));
     }
 
     /**
@@ -194,7 +196,7 @@ class SubscriberTest extends TestCase
      */
     public function test_404_is_returned_when_accessing_unknown_subscriber()
     {
-        $this->assertDatabaseMissing(Subscriber::class,["id" => $id =  42]);
+        $this->assertDatabaseMissing(Subscriber::class, ["id" => $id =  42]);
         $response = $this->get(route("subscribers.show", [
             "subscriber" => $id,
         ]));
@@ -203,7 +205,5 @@ class SubscriberTest extends TestCase
             "subscriber" => $id,
         ]));
         $response->assertNotFound();
-
     }
-
 }
