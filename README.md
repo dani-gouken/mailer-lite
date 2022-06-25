@@ -22,3 +22,6 @@ To run the tests, run the command:
 `php artisan test`
 
 if you want to run the test against a real database, you can comment the `DB_CONNECTION` line in the `phpunit.xml` file
+
+# Run the linter
+`composer lint:check`
