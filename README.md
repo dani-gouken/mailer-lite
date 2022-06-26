@@ -2,8 +2,9 @@
 # Requirements
 - PHP 8.1, with all the required extension for Laravel 
 - Composer
-- Node runtime
-
+- Node
+- NPM
+- An SQL database (MySQL, MariaDB, ...)
 # Run the project
 - Run `composer install` to install all the php dependencies
 - Run `npm i` to install all node modules
