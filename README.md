@@ -1,6 +1,6 @@
 # Mailer lite coding test
 # Requirements
-- PHP 8.1, with all the required extension Laravel 
+- PHP 8.1, with all the required extension for Laravel 
 - Composer
 - Node runtime
 
