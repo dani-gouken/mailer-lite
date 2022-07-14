@@ -1,10 +1,10 @@
 # Mailer lite coding test
 # Requirements
-- PHP 8.1, with all the required extension for Laravel 
+- PHP 8.1, with all the required extensions for Laravel 
 - Composer
 - Node
 - NPM
-- An SQL database (MySQL, MariaDB, ...)
+- A SQL database (MySQL, MariaDB, ...)
 # Run the project
 - Run `composer install` to install all the php dependencies
 - Run `npm i` to install all node modules
